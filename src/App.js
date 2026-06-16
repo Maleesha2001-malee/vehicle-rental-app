@@ -151,6 +151,7 @@ const BookingForm = ({ initial, vehicles, bookings, onSave, onClose }) => {
       const v = vehicles.find(x => x.id === f.vehicleId);
       if (v) set("dailyPrice", v.dailyPrice);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [f.vehicleId]);
 
   useEffect(() => {
@@ -160,6 +161,7 @@ const BookingForm = ({ initial, vehicles, bookings, onSave, onClose }) => {
       const rem = total - Number(f.advancePayment) + Number(f.extraMileageCharge);
       setF(p => ({ ...p, numDays: d, totalAmount: total, remainingBalance: rem }));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [f.startDate, f.endDate, f.dailyPrice, f.advancePayment, f.extraMileageCharge]);
 
   useEffect(() => {
@@ -168,6 +170,7 @@ const BookingForm = ({ initial, vehicles, bookings, onSave, onClose }) => {
       const extra = dist > 0 ? dist * Number(f.extraMileageRate) : 0;
       setF(p => ({ ...p, totalDistance: Math.max(0, dist), extraMileageCharge: extra }));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [f.startMileage, f.endMileage, f.extraMileageRate]);
 
   const submit = () => {
